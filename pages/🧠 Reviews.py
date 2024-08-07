@@ -64,7 +64,7 @@ class DataVisualizer:
             reviews['nota'] = reviews['nota'] / 2
             avg_ratings = reviews.groupby('jogo_id')['nota'].mean()
             avg_ratings = avg_ratings.to_frame().join(jogos.set_index('id')['title']).rename(columns={'nota': 'avg_rating', 'title': 'game_title'})
-            avg_ratings = avg_ratings.sort_values('avg_rating', ascending=False)
+            avg_ratings = avg_ratings.sort_values('avg_rating', ascending=False).head(5)
 
             fig = go.Figure()
 
